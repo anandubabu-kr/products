@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Outfit';
+    color: blanchedalmond;
+}
+
+.container {
+    background-color: hsl(217, 54%, 11%);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-weight: 300;
+}
+
+.card {
+    background-color: hsl(216, 50%, 16%);
+    padding: 1.5rem;
+    margin: 1rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+    color: hsl(215, 51%, 70%);
+    font-size: 18px;
+    box-shadow: 0px 10px 2rem black;
+}
+
+.card-image {
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image img {
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-title, .name {
+    color: hsl(0, 0%, 100%);
+}
+
+.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 11;
+    background-color: hsl(178, 100%, 50%);
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    opacity: 0;
+}
+
+.active .img-icon {
+    width: 50px;
+    height: auto;
+}
+
+.card-image:hover .active {
+    opacity: .5;
+    cursor: pointer;
+
+}
+
+.card-title {
+    margin: 1rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.creator {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    border-radius: 50%;
+    border:1px solid white
+}
+
+.creator-text {
+    margin-left: 1rem;
+
+}
+
+.line {
+    background-color: hsl(215, 32%, 27%);
+    color: hsl(215, 32%, 27%);
+    margin: 1rem 0;
+    padding: .5px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.info img{
+    align-self:center;
+}
+
+.left,.right{
+
+    display: flex;
+}
+
+.left {
+    color: hsl(178, 100%, 50%);
+}
+.info p{
+    display: inline-block;
+    margin: 0 .5rem;
+}
+
+.card-title:hover,.name:hover{
+    color: hsl(178, 100%, 50%);
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    .card {
+        width: 375px;
+    }
+}

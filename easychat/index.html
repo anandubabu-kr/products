@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/f1c283d95c.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messageing</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container{
+            width: 100%;
+            min-height: 100vh;
+            display: block;
+            position: absolute;
+            background-color: rgba(1, 0, 0, .1);
+            align-items: center;
+            color: #e3e3e3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            z-index: 12;
+        }
+        .displays{
+            display: flex;
+            flex-flow: column;
+            min-height: 100vh;
+            width: 100%;
+            margin: 0px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header{
+            width: 100%;
+            text-align: center;
+            background-color: #01b636;
+            box-shadow:2px 5px 40px rgba(1, 0, 0, 1);
+        }
+        main{
+            width: 90%;
+            display:flex ;
+            flex-flow: column;
+            align-content: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            border: 2px solid darkgreen;
+            border-radius: 50px 10px;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            width: 90%;
+            /* border: 1px solid red; */
+            margin: 20px
+        }
+        .inputs{
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+        }
+        #code{
+            width: 30px;
+        }
+        label{
+            word-wrap:break-word;
+        }
+        input{
+            background-color: aliceblue;
+            max-width:150px ;
+            height: 40px;
+            margin: 10px;
+            border:2px solid darkgreen;
+            border-radius: 10px;
+            text-align: center;
+        }
+        button{
+            background-color: #01b636;
+            color: cornsilk;
+            width:200px ;
+            height: 40px;
+            border: 2px solid darkgreen;
+            border-radius: 20px;
+            font-size: 150%;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 20px;
+        }
+        footer{
+            width: 100%;
+            min-height: 80px;
+            background-color: #333;
+            text-align: center;
+            bottom: 0px;
+        }
+        #ballcanvas{
+            display: block;
+            position: absolute;
+            background-color:#e3e3e3;
+            height: 100vh;
+            width: 100%;
+            z-index: 1;
+        }
+        .ball{
+            border-radius: 50%;
+            background-color:#01b636 ;
+            position: absolute;
+            box-shadow:2px 5px 10px rgba(1, 0, 0, 1);
+        }
+        i{
+            margin: 10px;
+            padding: 10px;
+            color: #e3e3e3;
+            transition: 1s;
+        }
+        i:hover{
+            color: #01b636;
+        }
+    </style>
+    <script>
+        function chat(){
+            var link="http://wa.me/";
+            var code=document.data.code.value;
+            var num=document.data.number.value;
+            if(isNaN(num)){
+                alert("Enter a number ")
+            }else{
+                link=link+code+num;
+                console.log(link)
+                window.location.href = link;
+            }
+        }
+        window.onload=function(){
+            for(let i=0;i<110;i++){
+            var bubble=document.createElement("div");
+            bubble.className="ball";
+            var posx=Math.random()*80+"%";
+            var posy=Math.random()*80+"%";
+            var rad=Math.random()*60+"px";
+            bubble.style.height=rad;
+            bubble.style.width=rad;
+            bubble.style.left=posx;
+            bubble.style.top=posy;
+            console.log(rad)
+            document.getElementById("ballcanvas").appendChild(bubble);
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="ballcanvas">
+    </div>
+    <div class="container">
+        <div class="displays">
+            <header>
+                <h1>EasyChat</h1>
+            </header>
+            <main>
+                <p>
+                    Enter the number and click chat
+                </p>
+                <form action="" name="data" id="data">
+                    <div class="inputs">
+                        <label for="code">
+                            country code
+                        </label>
+                        <input type="text" id="code" name="code" placeholder="+91" value="+91">
+                    </div>
+                    <div  class="inputs">
+                        <label for="number">
+                            Mobile Number 
+                        </label>
+                        <input type="text" id="number" name="number" placeholder="number">
+                    </div>
+                </form>
+                <div>
+                    <button onclick="chat()">Chat</button>
+                </div>
+            </main>
+            <footer>
+                <p>By <br> Anandu Babu</p>
+                <div class="links">
+                    <a href="http://twitter.com/Anandu_Babu_">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="http://wa.me/+919947975674">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="http://www.linkedin.com/in/anandu-babu-dreamdare">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/AnanduBabucj7">
+                        <i class="fa fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

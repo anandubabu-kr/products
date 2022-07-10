@@ -1,0 +1,161 @@
+html,body {
+    scroll-behavior: smooth;
+    padding: 0rem;
+    /* scroll-margin-top: 20rem; */
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e2ddff;
+    line-height: 2;
+    color: #444444;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100vh;
+}
+
+nav {
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-flow: column;
+    align-items: initial;
+    /* min-width: 250px; */
+    padding: 10px;
+}
+menu{
+    padding: 0px;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: #333333;
+    padding: .5rem 1rem;
+
+}
+.nav-link {
+    display: block;
+    line-height: normal;
+    padding: 1rem 1rem;
+}
+
+.nav-link:hover{
+    background-color: #e2ddff;
+}
+
+.close-button {
+    width: 50px;
+    display: inline-block;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3;
+    transform: translateX(-300px);
+    transition: .6s;
+    
+}
+
+@media screen and (min-width:600px) {
+    .hamberger,
+    .close-button {
+        display: none;
+    }
+    nav{
+        min-width: 250px;
+
+    }
+}
+
+@media screen and (max-width:600px) {
+    nav header{
+        overflow: hidden;
+        display: none;
+        position: fixed;
+        background: transparent;
+    }
+    menu {
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        min-width: 250px;
+        transform: translateX(-300px);
+        transition: .6s;
+        padding-top: 5rem;
+        background-color:#FFFFFF ;
+    }
+
+
+    .hamberger,
+    .close-button {
+        display: block;
+    }
+}
+
+h2{
+    margin-top: 5rem;
+}
+p{
+    padding: 1rem;
+
+}
+
+main {
+    box-sizing: border-box;
+    display: inline-block;
+    scroll-behavior: smooth ;
+    padding: 20px;
+    overflow: scroll;
+    width: 100%;
+}
+
+section{
+    margin: 1rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+}
+
+section header, article ,h3,p{
+    margin: 0px;
+}
+
+.links{
+    display: flex;
+    padding: 1rem;
+    text-decoration: none;
+}
+.links__demo{
+    background-color: orange;
+    outline: 2px solid orange;
+    color: white;
+}
+.links__code{
+    outline: 2px solid orange;
+}
+.active {
+    transform: translateX(0px);
+    transform: translateY(0px);
+    transform: scale(1);
+}
+
+.images img{
+    /* height: 100%; */
+    width: 100%;
+}

@@ -1,0 +1,153 @@
+*{
+	padding:0;
+	margin: 0; 
+}
+#loader{
+	position: fixed;
+  	width: 100%;
+  	height:  100vh;
+  	background: #000
+  	url('http://www.digimatazz.ml/131.gif')
+  	no-repeat center;
+  	z-index: 2545;
+ }
+body,html{
+			height: 100vh;
+			margin:0;
+}
+.backgd{
+  	background-image: url('bg.jpg');
+	min-height:100%;
+	background-position:center;
+	background-size: cover;
+	position: relative;
+	color: white;
+	font-family: comfortaa;
+	overflow: scroll;
+	
+}
+ img{
+ 	padding-top:10%;
+ 	display: block;
+ 	height: 80px;
+ 	width: auto;
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ }
+.logo{
+	position: absolute;
+	transform: translateY(-50%);
+	width: 100%;
+	top :26%;
+	min-height: 10%;
+	height: 250px;
+	box-sizing: border-box;
+	margin: 10px;
+	padding-bottom: 10px;
+	display: block;
+	font-size:100%;
+}
+h1{
+	display: block;
+}
+.info{
+	position: absolute;
+	top:80%;
+	box-sizing: border-box;
+	margin: 10px;
+	display: block;
+	left:50%; 
+	transform: translate(-50%, -50%);
+	text-align: center;
+	text-shadow: 0px 0px 10px black;
+}
+h4{
+	padding:  10px;
+}
+p{
+	padding: 8px;
+}
+.para{
+	padding: 15px;
+	border-radius: 24px;
+	display: block;
+	margin: 15px;
+	border: 0px ;
+	background-color: rgba(1,1,1,.5);
+}
+.sect{
+	margin: auto;
+	display: block;
+}
+.para i{
+	padding-left: 8px;
+}
+.sect a{
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.panal {
+ 	background-color: #000;
+ 	overflow: hidden;
+ 	z-index: 2;
+ 	opacity: .85;
+ 	border-radius: 0px 0px 20px 20px;
+}
+.panal a {
+	border-radius: 20px;
+	transition: .5s;
+  	float: left;
+ 	display: block;
+  	color: #fff;
+  	text-align: center;
+  	padding: 14px 16px;
+  	text-decoration: none;
+  	font-size: 17px;
+		}
+.panal a:hover {
+   	background-color:#00a3cc;
+  	text-shadow: 0px 0px 7px black;
+		}
+.panal a.active {
+	transition: .5s;
+  	color: white;
+}
+.panal .icon {
+ 	display: none;
+}
+.panal .icon:hover{
+	color: white;
+}
+@media screen and (max-width: 600px) {
+    .panal a{
+     	display: none;}
+	.panal a.icon {
+    	float: right;
+    	display: block;
+  	}
+}
+@media screen and (max-width: 600px) {
+  	.panal.responsive {
+  		position: relative;
+  	}
+  	.panal.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  	.panal.responsive a {
+    	float: none;
+    	display: block;
+    	text-align: left;
+  	}
+}
+i{
+	color: #bbb;
+	transition: .6s;
+}
+i:hover{
+	color:white ;
+}

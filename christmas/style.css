@@ -1,0 +1,94 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #353633;
+    background-image: url('snow.png');
+    background-size: cover;
+
+    background-repeat: no-repeat;
+    color: whitesmoke;
+
+
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    flex-flow: column;
+    justify-items: center;
+    align-items: center;
+    background: transparent;
+    padding: 1rem;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.tree {
+    position: relative;
+    top: -200px;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(30deg);
+    animation: animate 12s linear infinite;
+}
+
+
+
+@keyframes animate {
+    0% {
+        transform: rotateX(-20deg) rotateY(360deg);
+    }
+
+    100% {
+        transform: rotateX(-20deg) rotateY(0deg);
+    }
+}
+
+.tree div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: translateY(calc(100px * var(--j)));
+}
+
+.tree div.top span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #53e653, #2ed12e);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform-origin: bottom;
+    border-bottom: 10px solid #00000019;
+    transform: rotateY(calc(90deg*var(--i))) rotateX(30deg) translateZ(173px);
+}
+
+.tree div.bottum span {
+    position: absolute;
+    top: 550px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(90deg, #ba390b, #f38910);
+    /* clip-path: polygon(50% 0%, 0% 100%, 100% 100%); */
+    transform-origin: bottom;
+    border-bottom: 10px solid #00000019;
+    transform: rotateY(calc(90deg*var(--i))) translateZ(30px);
+
+}

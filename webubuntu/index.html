@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/f1c283d95c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+    <title>Ubuntu web</title>
+</head>
+<body>
+    <div class="container" id="loadingscreen">
+        <p class="ubuntu">ubuntu</p>
+        <div class="loading"> 
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div> 
+    </div>
+    <div class="container" id="loginscreen" >
+        <div class="topmenu">
+            <div class="sysname">
+                <p>webubuntu</p>
+            </div>
+            <div class="menu"> 
+                <i class="fas fa-universal-access"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+                <i class="fas fa-power-off" onclick="showPowerOptions()"></i>
+            </div>
+            
+        </div>
+        <div id="powerOptions">
+            <button>Network</button>
+            <button>Suspend</button>
+            <button>Power off</button>
+            <button>Air plne</button>
+        </div>
+        <div class="loginform">
+            <form action="">
+                <p>User</p>
+                <input type="password" name="password" id="password">
+            </form>
+        </div>
+        <div class="osversioninfo">
+            <p>20.04 LTS</p>
+        </div>
+    </div>
+    <div class="container" id="desktop" >
+        <div class="topmenu">
+            <div class="activities" onclick="showActivities()"style="cursor: pointer;">Activities</div>
+            <div class="date" id="date">wed Apr 7 10:54:08 PM</div>
+            <div class="menu"> 
+                <i class="fas fa-universal-access"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+                <i class="fas fa-chevron-down" onclick="showMainOptions()"></i>
+            </div>
+        </div>
+        <div id="mainpowerOptions">
+
+            <div class="hr"></div>
+            <button><i class="fas fa-wifi"></i>Network</button>
+            <button><i class="fas fa-plane"></i>Air plne</button>
+            <button><i class="fas fa-cog"></i>Settings</button>
+            <div class="hr"></div>
+            <button><i class="fas fa-lock"></i>Lock</button>
+            <button><i class="fas fa-sign-out-alt"></i>Suspend</button>
+            <button><i class="fas fa-power-off"></i>Power off</button>
+        </div>
+        <div class="dock">
+            <div class="apps">
+                <i class="fab fa-firefox-browser" onclick="alert('Installation Failed')"></i>
+                <i class="fas fa-terminal" onclick="showTerminal()"></i>
+                <i class="fas fa-folder-open" onclick="showFiles()"></i>
+            </div>
+            <div class="home">
+                <i class="fas fa-ellipsis-v"></i>
+                <i class="fas fa-ellipsis-v"></i>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+        <div id="activities">
+            <input type="text" id="search" placeholder="Type to search">
+            <p>There are no Activities</p>
+            <div></div>
+        </div>
+        <div id="terminal">
+            <div class="topbar">
+                <div></div>
+                <div class="terminalTitle">
+                    <p>Terminal</p>
+                </div>
+                <div class="terminalOptions">
+                    <button class="minus"  onclick="showTerminal()">-</button>
+                    <button id="fullscreen">></button>
+                    <button class="close"  onclick="showTerminal()" style="background-color:red ;">x</button>
+                </div>
+            </div>
+            <div class="terminaltext">
+                <p>user@webubuntu:$</p>
+            </div>
+        </div>
+        <div id="files">
+            <div class="topbar">
+                <div></div>
+                <div class="filesTitle">
+                    <p>Files</p>
+                </div>
+                <div class="filesOptions">
+                    <button class="minus"  onclick="showFiles()">-</button>
+                    <button id="fullscreen">></button>
+                    <button class="close"  onclick="showFiles()" style="background-color:red ;">x</button>
+                </div>
+            </div>
+            <div class="filesData">
+                <div class="file"><i class="fas fa-folder"></i><p>Documents</p></div>
+                <div class="file"><i class="fas fa-folder"></i><p>Music</p></div>
+                <div class="file"><i class="fas fa-folder"></i><p>Public</p></div>
+                <div class="file"><i class="fas fa-folder"></i><p>Pictures</p></div>
+                <div class="file"><i class="fas fa-folder"></i><p>Downloads</p></div>
+
+                <div class="file"><i class="fas fa-folder"></i><p>Videos</p></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

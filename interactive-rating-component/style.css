@@ -1,0 +1,105 @@
+body {
+    font-family: 'Overpass', sans-serif;
+    padding: 0px;
+    box-sizing: border-box;
+
+    margin: 0px;
+}
+
+.container {
+    display: flex;
+    background-color: hsl(216, 12%, 8%);
+    height: 100vh;
+    box-sizing: border-box;
+    font-weight: 400;
+    width: 100%;
+}
+
+.rating-wrapper {
+    background-color: hsl(213, 19%, 18%);
+    color: hsl(0, 0%, 100%);
+    padding: 2.5rem;
+    
+    box-sizing: border-box;
+    max-width: 375px;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: auto;
+}
+
+.ratings {
+    margin: .5rem;
+    padding: 0px;
+    /* border: 1px solid red; */
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+p {
+    margin-bottom: 2rem;
+}
+
+.rating,
+img {
+    padding: 1.5rem;
+    border-radius: 50%;
+    background-color: hsl(214, 19%, 24%);
+    aspect-ratio: 1/1;
+    text-align: center;
+    line-height: 50%;
+    margin-bottom: 2rem;
+}
+
+button {
+    border: 0px;
+    border-radius: 5px;
+    font-weight: 400;
+    padding: .5rem;
+    transition: .4s ease-in-out;
+    color: antiquewhite;
+}
+
+.selected{
+    background-color: hsl(217, 12%, 63%);
+}
+button:hover {
+    background-color: hsl(25, 97%, 53%);
+}
+
+button[type=submit] {
+    background-color: hsl(25, 97%, 53%);
+    color: white;
+    padding: 1rem;
+    border-radius: 30px;
+    width: 100%;
+
+}
+
+button[type=submit]:hover {
+    background-color: aliceblue;
+    color: hsl(25, 97%, 53%);
+}
+.selected-info{
+    padding: .5rem;
+    background-color:hsl(214, 19%, 24%) ;
+    border-radius: 30px;
+    color: hsl(25, 97%, 53%);
+}
+.submitted{
+    display: none;  
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+.submitted>*{
+    margin: auto;
+}
+.submitted>img{
+    width: 100px;
+    height: auto;
+}

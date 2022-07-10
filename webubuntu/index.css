@@ -1,0 +1,254 @@
+body{
+    background-color: #333333;
+    padding: 0px;
+    margin: 0px;
+    width:100%;
+    height: 100vh;
+    color: aliceblue;
+    font-family: 'Ubuntu', sans-serif;
+}
+.container{
+    margin:0px ;
+    padding: 0px;
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+}
+/*------------- LOADING SCREEN ----------------------------------------*/
+#loadingscreen{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #5E2750;
+    z-index: 20;
+}
+.ubuntu{
+    color: aliceblue;
+    font-size: 170%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.dot{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    display: inline-block;
+    margin:0px 4px 0px 4px;
+    animation: loading 5s  infinite ease-in;
+}
+@keyframes loading{
+    50%{
+        background-color: #E95420;
+    }
+}
+.loading .dot:nth-child(1){
+    animation-delay: 0s;
+}
+.loading .dot:nth-child(2){
+    animation-delay: 1s;
+}
+.loading .dot:nth-child(3){
+    animation-delay: 2s;
+}
+.loading .dot:nth-child(4){
+    animation-delay: 3s;
+}
+.loading .dot:nth-child(5){
+    animation-delay: 4s;
+}
+#loginscreen{
+    background-color: #5e2750;
+    background-image: url("u20.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: 10;
+}
+.loginform{
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 30px;
+    color: aliceblue;
+    font-family: inherit;
+    border: 2px solid #990f76;
+    border-radius: 10px;
+    padding: 3px 10px;
+}
+.loginform input{
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    color: aliceblue;
+    border: 0px;
+    height: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.osversioninfo{
+    display: flex;
+    position: absolute;
+    bottom: 5%;
+    left: 50px;
+}
+#powerOptions,#mainpowerOptions{
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    width: 150px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    padding: 3px;
+}
+#powerOptions button,#mainpowerOptions button{
+    background-color: aliceblue;
+    cursor: pointer;
+    border: 0px;
+    font-size:70%;
+    margin-top: 5px;
+}
+#mainpowerOptions button i{
+    margin-right: 7px;
+}
+.hr{
+    width: 80%;
+    height:1px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background-color: #aaaaaa;
+    color: #333333;
+}
+#desktop{
+    background-color: #E95420;
+    background-image: url("walp.png");
+    background-blend-mode:color-dodge;
+    display: block;
+    z-index: 1;
+}
+.topmenu{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Ubuntu', sans-serif;
+    font-size: 10px;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+    z-index: 100;
+}
+.topmenu i{
+    margin-right: 6px;
+    cursor: pointer;
+
+}
+.dock{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    position: absolute;
+    color: aliceblue;
+    /* padding-top: 20px; */
+    width: 40px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .4);
+}
+.apps{
+    padding-top: 20px;
+}
+.apps i{
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    padding: 5px 0px 5px 0px;
+    margin: 0px 0px 5px 0px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.home{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#activities{
+    display: none;
+    position: absolute;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,.5);
+}
+#search{
+    border: 0px;
+    border-radius: 20px;
+    height: 20px;
+    width: 150px;
+    padding-left: 10px;
+    margin-top: 50px;
+    font-size: 10px;
+}
+#terminal,#files{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    display:none ;
+    flex-flow: column;
+    background-color: rgba(0, 0, 0, .4);
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#files{
+    background-color: #333333;
+
+}
+.topbar{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background-color: #000;
+    height:20px;
+
+}
+.topbar p{
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+ .topbar button{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 0px;
+    margin-right: 3px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: inherit;
+    color: aliceblue;
+}
+.terminaltext{
+    font-size: 10px;
+}
+.file{
+    font-size: 40px;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+}
+.file p{
+    font-size: 10px;
+    padding-top: 0px;
+    margin: 0px;
+}

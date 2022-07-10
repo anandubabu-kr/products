@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <title>Angular APp</title>
+  <style>
+    .deletTask {
+      cursor: pointer;
+      font-size: 30px;
+    }
+  </style>
+  <script>
+    // create task object --> check for duplicate task --> add task
+
+    var taskApp = angular.module('taskApp', []);
+    taskApp.controller('taskCtrl', function ($scope) {
+      // Initializations
+      $scope.taskPriority = [
+        'High',
+        'Medium',
+        'Low',
+        'None'
+      ];
+      $scope.catagoryList = ['Office', 'Personal', 'Education', 'Other'];
+
+      $scope.taskList = [
+        {
+          name: 'Catch Up Meeting',
+          priority: 'high',
+          time: '12:30:00',
+          date: '',
+          catagory: 'Office',
+        },
+      ];
+
+      $scope.createTaskObject = function () {
+        /**
+         *Creates a task object after checking the fields.
+         *then calls addTask  with new task object
+         */
+        $scope.errortext = '';
+        if (!$scope.newItem) {
+          $scope.errortext = 'Please enter a task name';
+          return;
+        }
+        if (!$scope.setTaskPriority) {
+          $scope.errortext = 'Please enter task priority';
+          return;
+        }
+        if (!$scope.taskCatagory) {
+          $scope.errortext = 'Please enter task catagory';
+          return;
+        }
+        var ntd = {};
+        if (!$scope.newTaskTime) {
+          ntd.time = $scope.newTaskTime = '';
+        } else {
+          ntd.time =
+            $scope.newTaskTime.getHours() +
+            ':' +
+            $scope.newTaskTime.getMinutes() +
+            ':' +
+            $scope.newTaskTime.getSeconds();
+        }
+        if (!$scope.newTaskDate) {
+          ntd.date = $scope.newTaskDate = '';
+        } else {
+          ntd.date =
+            $scope.newTaskDate.getDate() +
+            '-' +
+            $scope.newTaskDate.getMonth() +
+            '-' +
+            $scope.newTaskDate.getFullYear();
+        }
+        ntd.name = $scope.newItem;
+        ntd.priority = $scope.setTaskPriority;
+        ntd.catagory = $scope.taskCatagory;
+
+        // add task
+
+        $scope.addTask(ntd);
+      };
+
+      $scope.checkDuplicate = function (newTaskTitle) {
+        // console.log(newTaskTitle);
+        for (const i of $scope.taskList) {
+          // console.log("in list :"+i.name)
+          if (i.name == newTaskTitle) {
+            return false;
+          }
+        }
+        return true;
+      };
+
+      $scope.addTask = function (ntd) {
+        // Adds a task after checking for duplicate tasks
+
+        if ($scope.checkDuplicate(ntd.name)) {
+          // console.log($scope.taskList.indexOf(ntd));
+          $scope.taskList.push(ntd);
+        } else {
+          $scope.errortext = 'Task already exist !';
+        }
+      };
+
+      $scope.deleteTask = function (task) {
+        $scope.errortext = '';
+        $scope.taskList.splice(task, 1);
+      };
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid bg-dark" style="height: 100vh; overflow-y: scroll" ng-app="taskApp"
+    ng-controller="taskCtrl">
+    <div class="taskSet container my-5 bg-white pt-2">
+      <div class="
+            container-fluid
+            my-4
+            border
+            round
+            d-flex
+            bg-primary
+            justify-content-center
+            taskSetHeader
+          ">
+        <h1 class="">To-Do App</h1>
+      </div>
+      <div class="taskList">
+        <div class="row my-2">
+          <div class="col-sm-12 col-md-6">
+            <h3>Tasks</h3>
+            <ul class="list-group my-3">
+              <li class="
+                    list-group-item
+                    list-group-item-action
+                    list-group-item-primary
+                    d-flex
+                    justify-content-between
+                  " ng-repeat="task in taskList">
+                <span>
+                  <span> {{task.name}} <br /> </span>
+                  <span ng-if="task.priority!=''" class="badge badge-primary">
+                    {{task.priority}}
+                  </span>
+                  <span ng-if="task.time!=''" class="badge badge-primary">
+                    {{task.time}}
+                  </span>
+                  <span ng-if="task.date!=''" class="badge badge-primary">
+                    {{task.date}}
+                  </span>
+                  <span ng-if="task.catagory!=''" class="badge badge-primary">
+                    {{task.catagory}}
+                  </span>
+                </span>
+                <span class="deletTask" ng-click="deleteTask($index)">&times;</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="taskAddset">
+              <h3>Add new task</h3>
+              <form action="" class="form">
+                <input class="form-control pt-2 my-3" type="text" name="newTesk" id="newTask" placeholder="Task Name"
+                  ng-model="newItem" required />
+                <input class="form-control pt-2 my-3" type="time" name="taskTime" id="taskTime" ng-model="newTaskTime"
+                  required />
+                <input class="form-control pt-2 my-3" type="date" name="date" id="date" ng-model="newTaskDate"
+                  required />
+                <div class="row pt-2">
+                  <div class="col">
+                    <label for="taskPriority">Priority</label>
+                    <select class="form-control" name="taskPriority" id="taskPriority" ng-model="setTaskPriority"
+                      ng-options="p for p in taskPriority" required></select>
+                  </div>
+                  <div class="col">
+                    <label for="taskCatagory">Catagory</label>
+                    <select class="col form-control" name="taskCatagory" id="taskCatagory" ng-model="taskCatagory"
+                      ng-options="tName for tName in catagoryList" required></select>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-success btn-block my-3" ng-click="createTaskObject()">
+                  Add
+                </button>
+              </form>
+              <p class="bg-danger text-white text-center">{{errortext}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
