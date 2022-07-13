@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/f1c283d95c.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messageing</title>
     <style>
-        body{
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;500&display=swap');
+
+        body,html {
             margin: 0px;
             padding: 0px;
             width: 100%;
             height: 100vh;
             overflow: hidden;
         }
-        .container{
+
+        .container {
             width: 100%;
             min-height: 100vh;
             display: block;
@@ -21,10 +25,15 @@
             background-color: rgba(1, 0, 0, .1);
             align-items: center;
             color: #e3e3e3;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Outfit', Tahoma, Geneva, Verdana, sans-serif;
             z-index: 12;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
         }
-        .displays{
+
+        .displays {
             display: flex;
             flex-flow: column;
             min-height: 100vh;
@@ -33,138 +42,191 @@
             align-items: center;
             justify-content: space-between;
         }
-        header{
+
+        header {
             width: 100%;
             text-align: center;
             background-color: #01b636;
-            box-shadow:2px 5px 40px rgba(1, 0, 0, 1);
+            box-shadow: 2px 5px 40px rgba(1, 0, 0, 1);
         }
-        main{
-            width: 90%;
-            display:flex ;
+
+        main {
+            width: 100%;
+            display: flex;
             flex-flow: column;
             align-content: center;
             justify-content: space-between;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.2);
             align-items: center;
-            border: 2px solid darkgreen;
-            border-radius: 50px 10px;
+            border: 1px solid white;
+            border-radius: 50px 5px;
+            backdrop-filter: blur(5px);
+            color: rgb(1, 41, 1);
+            max-width: 600px;
         }
-        form{
+
+        form {
             display: flex;
             justify-content: center;
-            width: 90%;
-            /* border: 1px solid red; */
-            margin: 20px
         }
-        .inputs{
+
+        .inputs {
             display: flex;
             flex-flow: column;
             justify-content: center;
             align-items: center;
             min-width: 100px;
         }
-        #code{
+
+        #code {
             width: 30px;
         }
-        label{
-            word-wrap:break-word;
+
+        label {
+            word-wrap: break-word;
         }
-        input{
+
+        input {
             background-color: aliceblue;
-            max-width:150px ;
+            max-width: 200px;
             height: 40px;
             margin: 10px;
-            border:2px solid darkgreen;
-            border-radius: 10px;
+            border: none;
+            /*2px solid darkgreen;*/
+            border-bottom: 2px solid green;
+            border-radius: 5px;
             text-align: center;
         }
-        button{
+
+        input:focus {
+            outline: none;
+        }
+
+        button {
             background-color: #01b636;
             color: cornsilk;
-            width:200px ;
+            width: 200px;
             height: 40px;
-            border: 2px solid darkgreen;
-            border-radius: 20px;
+            border: none;
+            /* 2px solid darkgreen;*/
+            border-radius: 5px;
             font-size: 150%;
-            font-weight: 900;
+            font-weight: 300;
             text-transform: uppercase;
+            transition: .4s;
             margin: 20px;
+            cursor: pointer;
         }
-        footer{
+
+        button:hover {
+            background-color: #047b27;
+        }
+
+        footer {
             width: 100%;
             min-height: 80px;
             background-color: #333;
             text-align: center;
             bottom: 0px;
         }
-        #ballcanvas{
+
+        #ballcanvas {
             display: block;
             position: absolute;
-            background-color:#e3e3e3;
+            background-color: #e3e3e3;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
             height: 100vh;
             width: 100%;
             z-index: 1;
         }
-        .ball{
+
+        .ball {
             border-radius: 50%;
-            background-color:#01b636 ;
+            background-color: #01b636;
             position: absolute;
-            box-shadow:2px 5px 10px rgba(1, 0, 0, 1);
+            box-shadow: 2px 5px 10px #010000;
+            animation: moveballs ease-in-out infinite alternate;
+            animation-duration: var(--randomt);
+            animation-delay: var(--randomt);
         }
-        i{
+
+        @keyframes moveballs {
+            from {
+                transform: translate(calc(var(--random)*var(--random)*5), var(--random));
+            }
+
+            to {
+                transform: translate(calc(var(--random)*-10), calc(var(--random)*-10));
+
+            }
+        }
+
+        i {
             margin: 10px;
             padding: 10px;
             color: #e3e3e3;
             transition: 1s;
         }
-        i:hover{
+
+        i:hover {
             color: #01b636;
+        }
+
+        h1 i {
+            padding: 0px;
+            margin: 0px;
+            color: #ffffff;
         }
     </style>
     <script>
-        function chat(){
-            var link="http://wa.me/";
-            var code=document.data.code.value;
-            var num=document.data.number.value;
-            if(isNaN(num)){
-                alert("Enter a number ")
-            }else{
-                link=link+code+num;
-                console.log(link)
+        function chat() {
+            let link = "http://wa.me/";
+            let code = document.data.code.value;
+            let num = document.data.number.value;
+            if (isNaN(num)) {
+                alert("Please enter a number ")
+            } else {
+                link = link + code + num;
                 window.location.href = link;
             }
         }
-        window.onload=function(){
-            for(let i=0;i<110;i++){
-            var bubble=document.createElement("div");
-            bubble.className="ball";
-            var posx=Math.random()*80+"%";
-            var posy=Math.random()*80+"%";
-            var rad=Math.random()*60+"px";
-            bubble.style.height=rad;
-            bubble.style.width=rad;
-            bubble.style.left=posx;
-            bubble.style.top=posy;
-            console.log(rad)
-            document.getElementById("ballcanvas").appendChild(bubble);
+        window.onload = function () {
+            for (let i = 0; i < 100; i++) {
+                let bubble = document.createElement("span");
+                bubble.className = "ball";
+                let posx = Math.random() * 100 + "%";
+                let posy = Math.random() * 100 + "%";
+                let rad = Math.random() * 60 + 10 + "px";
+                let random = Math.random() * 15 + 2
+                bubble.style.height = rad;
+                bubble.style.width = rad;
+                bubble.style.left = posx;
+                bubble.style.top = posy;
+                bubble.style.setProperty('--random', random + 'px')
+                bubble.style.setProperty('--randomt', random + 's')
+                document.getElementById("ballcanvas").appendChild(bubble);
             }
-            
+
         }
     </script>
 </head>
+
 <body>
     <div id="ballcanvas">
     </div>
     <div class="container">
         <div class="displays">
             <header>
-                <h1>EasyChat</h1>
+
+                <h1> <i class="fab fa-whatsapp"></i>EasyChat</h1>
             </header>
             <main>
-                <p>
+                <h2>
                     Enter the number and click chat
-                </p>
+                </h2>
                 <form action="" name="data" id="data">
                     <div class="inputs">
                         <label for="code">
@@ -172,9 +234,9 @@
                         </label>
                         <input type="text" id="code" name="code" placeholder="+91" value="+91">
                     </div>
-                    <div  class="inputs">
+                    <div class="inputs">
                         <label for="number">
-                            Mobile Number 
+                            Mobile Number
                         </label>
                         <input type="text" id="number" name="number" placeholder="number">
                     </div>
@@ -186,16 +248,16 @@
             <footer>
                 <p>By <br> Anandu Babu</p>
                 <div class="links">
-                    <a href="http://twitter.com/Anandu_Babu_">
+                    <a href="http://twitter.com/anandu-babu-kr">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <a href="http://wa.me/+919947975674">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="http://www.linkedin.com/in/anandu-babu-dreamdare">
+                    <a href="http://www.linkedin.com/in/anandu-babu-kr">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/AnanduBabucj7">
+                    <a href="https://github.com/AnanduBabuc-kr">
                         <i class="fa fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -203,4 +265,5 @@
         </div>
     </div>
 </body>
+
 </html>
