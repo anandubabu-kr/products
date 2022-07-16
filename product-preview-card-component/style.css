@@ -44,17 +44,10 @@ body {
     background-color: var(--NeutralWhite);
 }
 
-@media screen and (min-width:751px) {
-    .card-container {
-        display: flex;
-        max-width: 660px;
-    }
-
-}
 
 .image {
-    width: 100%;
     object-fit: cover;
+    flex: 50%;
 }
 
 .image img {
@@ -66,16 +59,17 @@ body {
 .card__content {
     padding: 1rem;
     display: flex;
+    flex: 50%;
     flex-direction: column;
     justify-content: space-between;
     font-weight: 500;
 }
 
-h3 {
+h1 {
     font-family: 'Fraunces', serif;
     font-weight: 700;
     color: var(--NeutralVerydarkblue);
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin: 0px;
 }
 
@@ -122,4 +116,15 @@ button svg{
     text-decoration: line-through;
     margin-left: 2rem;
     margin-bottom: 1rem;
+}
+
+@media screen and (min-width:751px) {
+    .card-container {
+        display: flex;
+        max-width: 660px;
+    }
+    .card__content {
+        padding: 2rem;
+    }
+
 }
