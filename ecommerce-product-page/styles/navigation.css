@@ -90,10 +90,15 @@ menu li a {
     .brand {
         padding-bottom: 2rem;
         margin: 0px;
+        transition: .3s;
     }
-
+    
     menu li:hover {
-        border-bottom: 5px solid var(--orange);
+        background: linear-gradient(var(--orange),var(--orange));
+        background-size: 100% 4px;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+
     }
 }
 
