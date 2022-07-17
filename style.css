@@ -130,6 +130,9 @@ section{
     border-radius: 10px;
     background-color: #FFFFFF;
     padding: 1rem;
+    max-width: 580px;
+    vertical-align: top;
+    display: inline-block;
 }
 
 section header, article ,h3,p{

@@ -2,7 +2,7 @@ body, html {
     margin: 0px;
     padding: 0px;
     min-height: 100vh;
-    background-color: aliceblue;
+    background-color: white;
 
 }
 *{
@@ -11,7 +11,7 @@ body, html {
 
 .conatainer {
     padding: 4rem;
-    background-color: aliceblue;
+    background-color: white;
     font-family: 'Noto Sans', sans-serif;
 }
 
@@ -33,7 +33,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: aliceblue;
+    background-color: white;
 }
 #t-close{
     display: none;
@@ -89,7 +89,10 @@ input{
     border: none;
     border-radius: 30px;
     width: 100%;
-    background-color: aliceblue;
+    background-color: white;
+}
+input:focus{
+    outline: none;
 }
 .nav-toggle-menu{
     display: none;
@@ -143,6 +146,7 @@ header>*{
     display: flex;
     border: 1px solid #525ded;
     padding: 0px;
+    overflow: hidden;
     border-radius: 5px;
     max-width: 400px;
 }
@@ -153,6 +157,8 @@ header>*{
     margin: 0px;
     text-align: center;
     font-size: .8rem;
+    border: 0px;
+    cursor: pointer;
 }
 
 .first-buttons {
@@ -167,7 +173,7 @@ a {
 /* Testimonials */
 
 .cards {
-    background-color: aliceblue;
+    background-color: white;
     font-family: 'Noto Sans', sans-serif;
     display: flex;
     flex-flow: column;
@@ -196,7 +202,7 @@ a {
 }
 
 .cards-testimoney {
-    background-color: aliceblue;
+    background-color: white;
     font-family: 'Noto Sans', sans-serif;
     display: flex;
     flex-flow: row;
