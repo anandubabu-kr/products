@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Completed Projects - Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and light theme colors -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: "#4F46E5", // Indigo-600
+              "light-bg": "#F9FAFB", // Light Gray background
+              "light-card": "#FFFFFF", // White card background
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom CSS for project card animation (initial hidden state for fade-in) */
+      .project-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+          box-shadow 0.3s, scale 0.3s;
+      }
+
+      /* Animation on hover for interactive feel */
+      .project-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Class added by JavaScript to trigger fade-in animation */
+      .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-light-bg text-gray-900 min-h-screen">
+    <!-- Header/Navigation Bar -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <h1 class="text-3xl font-extrabold tracking-tight text-primary">
+            My Development Portfolio
+          </h1>
+          <nav class="mt-2 md:mt-0 space-x-4">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-10 text-center">
+        Featured Projects
+      </h2>
+
+      <!-- Project Grid Container -->
+      <!-- Responsive Grid: 1 column on smallest mobile, 2 columns on small/tablet, 3 columns on desktop -->
+      <div
+        id="project-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <!-- Project Cards will be rendered here by JavaScript -->
+      </div>
+    </main>
+
+    <script>
+      // --- Project Data ---
+      const projects = [
+        {
+          id: 1,
+          title: "Real-time Billing System",
+          description:
+            "A full-stack application for managing daily sales, expenses, and ledger balance using Firestore.",
+          demoLink: "billing_dashboard.html",
+          image: "https://placehold.co/600x400/D1D5DB/1F2937?text=Billing+App",
+          category: "Finance",
+        },
+        {
+          id: 2,
+          title: "E-Commerce Frontend",
+          description:
+            "Responsive product listing and detail pages with modern carousel and discount logic.",
+          demoLink: "products.html",
+          image: "https://placehold.co/600x400/9CA3AF/1F2937?text=E-Shop+UI",
+          category: "Retail",
+        },
+        {
+          id: 3,
+          title: "Collaborative Whiteboard",
+          description:
+            "A simple, multi-user drawing canvas built with React and real-time state synchronization.",
+          demoLink: "#",
+          image:
+            "https://placehold.co/600x400/A78BFA/1F2937?text=Whiteboard+Tool",
+          category: "Collaboration",
+        },
+        {
+          id: 4,
+          title: "Weather Forecast API Client",
+          description:
+            "Interactive app fetching and displaying 7-day weather data using a public external API.",
+          demoLink: "#",
+          image: "https://placehold.co/600x400/FECACA/1F2937?text=Weather+App",
+          category: "Data",
+        },
+        {
+          id: 5,
+          title: "2D Physics Game",
+          description:
+            "A simple gravity and collision simulation game built with vanilla JavaScript on a canvas element.",
+          demoLink: "#",
+          image: "https://placehold.co/600x400/FDBA74/1F2937?text=Physics+Game",
+          category: "Gaming",
+        },
+        {
+          id: 6,
+          title: "Travel Planner Tool",
+          description:
+            "A dynamic tool that helps users organize itineraries, budgeting, and export trip details.",
+          demoLink: "#",
+          image:
+            "https://placehold.co/600x400/93C5FD/1F2937?text=Travel+Planner",
+          category: "Productivity",
+        },
+      ];
+
+      const projectGrid = document.getElementById("project-grid");
+
+      /**
+       * Renders all project cards and sets up the fade-in animation.
+       */
+      function renderProjects() {
+        projectGrid.innerHTML = ""; // Clear existing content
+
+        projects.forEach((project, index) => {
+          const projectCardDiv = document.createElement("div");
+          projectCardDiv.className =
+            "project-card bg-light-card rounded-xl shadow-lg overflow-hidden cursor-pointer border border-gray-100"; // Initial styling
+          projectCardDiv.setAttribute("data-index", index); // For staggered animation
+
+          projectCardDiv.innerHTML = `
+                    <!-- Image -->
+                    <div class="h-48 overflow-hidden bg-gray-100">
+                        <img src="${project.image}" 
+                             alt="${project.title} screenshot" 
+                             class="w-full h-full object-cover transition-opacity duration-500"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F3F4F6/6B7280?text=Project+Image';"
+                        >
+                    </div>
+
+                    <!-- Details -->
+                    <div class="p-5">
+                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">${project.category}</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 mt-1 truncate">${project.title}</h3>
+                        
+                        <!-- Description -->
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${project.description}</p>
+                        
+                        <!-- Demo Link Button -->
+                        <a href="${project.demoLink}" target="_blank" 
+                           class="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition duration-200 shadow-md">
+                            <span>View Demo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                `;
+
+          projectGrid.appendChild(projectCardDiv);
+        });
+
+        // Initiate staggered fade-in animation
+        startStaggeredFadeIn();
+      }
+
+      /**
+       * Applies a staggered fade-in effect to the project cards on load.
+       */
+      function startStaggeredFadeIn() {
+        const cards = document.querySelectorAll(".project-card");
+        cards.forEach((card, index) => {
+          // Apply a delay based on the card's index for the staggered effect
+          setTimeout(() => {
+            card.classList.add("fade-in");
+          }, index * 100); // 100ms delay between each card
+        });
+      }
+
+      // Run initialization function when the page loads
+      document.addEventListener("DOMContentLoaded", renderProjects);
+    </script>
+  </body>
+</html>
