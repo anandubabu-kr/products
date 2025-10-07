@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Featured Products - E-Shop</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and light theme colors -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: "#4F46E5", // Indigo-600
+              "accent-red": "#DC2626", // Red-600 for discounts
+              "light-bg": "#F9FAFB", // Light Gray background
+              "light-card": "#FFFFFF", // White card background
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar for aesthetics */
+      body {
+        scrollbar-color: #4f46e5 #c3c3c3;
+        scrollbar-width: thin;
+        font-family: "Inter", sans-serif;
+      }
+      /* Hide scrollbar while maintaining responsiveness for the slides container */
+      #carousel-slides {
+        scroll-snap-type: x mandatory;
+      }
+      .carousel-slide {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+      }
+    </style>
+  </head>
+  <body class="bg-light-bg text-gray-900 min-h-screen">
+    <!-- Header/Navigation Bar (Light Theme) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
+            Integra Software services
+          </h1>
+          <nav class="mt-2 md:mt-0 space-x-4">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Home</a
+            >
+            <a
+              href="./product.html"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Cart (0)</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <!-- Promotional Banner Carousel -->
+      <div
+        id="carousel-container"
+        class="relative w-full mb-10 overflow-hidden rounded-xl shadow-2xl"
+      >
+        <!-- Carousel Slides Container -->
+        <div
+          id="carousel-slides"
+          class="flex transition-transform duration-500 ease-in-out"
+        >
+          <!-- Slide 1: Primary Offer -->
+          <div
+            class="carousel-slide bg-primary text-white p-6 sm:p-10 flex items-center justify-between"
+          >
+            <div class="w-full sm:w-2/3">
+              <h2 class="text-2xl sm:text-4xl font-extrabold mb-1">
+                MEGA SALE: UP TO 50% OFF!
+              </h2>
+              <p class="mt-2 text-lg opacity-90">
+                Unlock incredible savings on our entire electronics range this
+                season.
+              </p>
+              <button
+                class="mt-4 bg-white text-primary px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg"
+              >
+                Explore Electronics
+              </button>
+            </div>
+            <img
+              src="https://picsum.photos/seed/banner1/200/200"
+              alt="Sale Image"
+              class="hidden sm:block w-32 h-32 rounded-lg object-cover shadow-xl"
+            />
+          </div>
+
+          <!-- Slide 2: Free Shipping -->
+          <div
+            class="carousel-slide bg-green-500 text-white p-6 sm:p-10 flex items-center justify-between"
+          >
+            <div class="w-full sm:w-2/3">
+              <h2 class="text-2xl sm:text-4xl font-extrabold mb-1">
+                Free Shipping Worldwide
+              </h2>
+              <p class="mt-2 text-lg opacity-90">
+                No minimum purchase required. Limited time offer!
+              </p>
+              <button
+                class="mt-4 bg-white text-green-500 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg"
+              >
+                View Details
+              </button>
+            </div>
+            <img
+              src="https://picsum.photos/seed/banner2/200/200"
+              alt="Shipping Image"
+              class="hidden sm:block w-32 h-32 rounded-lg object-cover shadow-xl"
+            />
+          </div>
+
+          <!-- Slide 3: New Arrivals -->
+          <div
+            class="carousel-slide bg-yellow-500 text-gray-900 p-6 sm:p-10 flex items-center justify-between"
+          >
+            <div class="w-full sm:w-2/3">
+              <h2 class="text-2xl sm:text-4xl font-extrabold mb-1">
+                New Arrivals Just Dropped
+              </h2>
+              <p class="mt-2 text-lg opacity-90">
+                Be the first to shop the latest collection. Fresh styles added!
+              </p>
+              <button
+                class="mt-4 bg-gray-900 text-white px-6 py-3 rounded-full font-bold hover:bg-gray-700 transition duration-300 shadow-lg"
+              >
+                Shop New Items
+              </button>
+            </div>
+            <img
+              src="https://picsum.photos/seed/banner3/200/200"
+              alt="New Arrivals"
+              class="hidden sm:block w-32 h-32 rounded-lg object-cover shadow-xl"
+            />
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button
+          id="prev-btn"
+          class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900/50 text-white p-3 rounded-full hover:bg-gray-800/70 transition duration-300 z-20"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          id="next-btn"
+          class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900/50 text-white p-3 rounded-full hover:bg-gray-800/70 transition duration-300 z-20"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+
+        <!-- Indicators -->
+        <div
+          id="carousel-indicators"
+          class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+        >
+          <!-- Indicators injected by JS -->
+        </div>
+      </div>
+
+      <h2
+        class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 border-b border-gray-300 pb-3"
+      >
+        All Products
+      </h2>
+
+      <!-- Product Grid Container -->
+      <!-- Responsive Grid Setup: 2 columns on mobile, 3 on medium, 4 on large -->
+      <div
+        id="product-grid"
+        class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4"
+      >
+        <!-- Product Cards will be rendered here by JavaScript -->
+      </div>
+    </main>
+
+    <script>
+      // --- Product Data and Rendering ---
+
+      // Sample product data with placeholder images from Picsum (using seeds for consistency)
+      const products = [
+        {
+          id: 1,
+          name: "Lapcare Wireless mouse",
+          price: 150.0,
+          discount: 20,
+          image: "https://picsum.photos/seed/product1/400/300",
+        },
+        {
+          id: 2,
+          name: "Lapcare keyboard",
+          price: 75.0,
+          discount: 15,
+          image: "https://picsum.photos/seed/product2/400/300",
+        },
+        {
+          id: 3,
+          name: "33W Charger",
+          price: 40.0,
+          discount: 0,
+          image: "https://picsum.photos/seed/product3/400/300",
+        },
+        {
+          id: 4,
+          name: "Headphone",
+          price: 299.99,
+          discount: 25,
+          image: "https://picsum.photos/seed/product4/400/300",
+        },
+        {
+          id: 5,
+          name: "Lapcare Headphone ",
+          price: 550.0,
+          discount: 10,
+          image: "https://picsum.photos/seed/product5/400/300",
+        },
+        {
+          id: 6,
+          name: "Bluetooth speaker",
+          price: 320.0,
+          discount: 30,
+          image: "https://picsum.photos/seed/product6/400/300",
+        },
+        {
+          id: 7,
+          name: "Smartwatch Series 7",
+          price: 199.0,
+          discount: 5,
+          image: "https://picsum.photos/seed/product7/400/300",
+        },
+        {
+          id: 8,
+          name: "Car charger",
+          price: 25.0,
+          discount: 0,
+          image: "https://picsum.photos/seed/product8/400/300",
+        },
+        {
+          id: 9,
+          name: "Mousepad",
+          price: 60.0,
+          discount: 10,
+          image: "https://picsum.photos/seed/product9/400/300",
+        },
+        {
+          id: 10,
+          name: "Wireless gaming keyboard",
+          price: 120.0,
+          discount: 20,
+          image: "https://picsum.photos/seed/product10/400/300",
+        },
+      ];
+
+      const productGrid = document.getElementById("product-grid");
+
+      /**
+       * Renders all product cards dynamically into the grid.
+       */
+      function renderProducts() {
+        productGrid.innerHTML = ""; // Clear existing content
+
+        products.forEach((product) => {
+          const finalPrice =
+            product.discount > 0
+              ? (product.price * (1 - product.discount / 100)).toFixed(2)
+              : product.price.toFixed(2);
+
+          const originalPriceHtml =
+            product.discount > 0
+              ? `<span class="text-sm text-gray-500 line-through mr-2">₹${product.price.toFixed(
+                  2
+                )}</span>`
+              : "";
+
+          // Discount badge uses the accent-red color
+          const discountBadge =
+            product.discount > 0
+              ? `<span class="absolute top-2 right-2 bg-accent-red text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">${product.discount}% OFF</span>`
+              : "";
+
+          const productCardHtml = `
+                    <a href="./product.html" class="product-card bg-light-card rounded-xl shadow-lg overflow-hidden relative transform hover:scale-[1.03] transition-all duration-300 cursor-pointer border border-gray-200 hover:border-primary">
+                        ${discountBadge}
+                        
+                        <!-- Image -->
+                        <div class="h-40 overflow-hidden bg-gray-100">
+                            <img src="${product.image}" 
+                                 alt="${product.name}" 
+                                 class="w-full h-full object-cover transition-opacity duration-500 hover:opacity-90"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x300/F3F4F6/6B7280?text=Image+Missing';"
+                            >
+                        </div>
+
+                        <!-- Details -->
+                        <div class="p-4 space-y-2">
+                            <!-- Product Name -->
+                            <h3 class="text-lg font-semibold text-gray-800 truncate">${
+                              product.name
+                            }</h3>
+                            
+                            <!-- Price & Discount -->
+                            <div class="flex items-baseline justify-start">
+                                <span class="text-2xl font-extrabold text-primary">
+                                    ₹${finalPrice}
+                                </span>
+                                ${originalPriceHtml}
+                            </div>
+
+                            <!-- Discount Percentage -->
+                            <div class="h-4">
+                                ${
+                                  product.discount > 0
+                                    ? `<p class="text-sm text-accent-red font-medium">Save ${product.discount}%</p>`
+                                    : ""
+                                }
+                            </div>
+                            
+                            <!-- Add to Cart Button -->
+                            <button class="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200 mt-2 shadow-md">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </a>
+                `;
+
+          productGrid.innerHTML += productCardHtml;
+        });
+      }
+
+      // --- Carousel Logic ---
+      const slidesContainer = document.getElementById("carousel-slides");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const indicatorsContainer = document.getElementById(
+        "carousel-indicators"
+      );
+      const totalSlides = slidesContainer.children.length;
+      let currentSlide = 0;
+
+      /**
+       * Updates the carousel position based on the currentSlide index.
+       */
+      function updateCarousel() {
+        const offset = currentSlide * 100;
+        slidesContainer.style.transform = `translateX(-${offset}%)`;
+        updateIndicators();
+      }
+
+      /**
+       * Generates and updates the carousel indicators (dots).
+       */
+      function updateIndicators() {
+        indicatorsContainer.innerHTML = "";
+        for (let i = 0; i < totalSlides; i++) {
+          const indicator = document.createElement("button");
+          indicator.classList.add(
+            "h-2",
+            "w-2",
+            "rounded-full",
+            "transition",
+            "duration-300"
+          );
+          if (i === currentSlide) {
+            indicator.classList.add("bg-white", "scale-125");
+          } else {
+            indicator.classList.add("bg-white/50", "hover:bg-white/70");
+          }
+          indicator.addEventListener("click", () => {
+            currentSlide = i;
+            updateCarousel();
+          });
+          indicatorsContainer.appendChild(indicator);
+        }
+      }
+
+      /**
+       * Navigates to the previous slide.
+       */
+      function goToPrev() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+
+      /**
+       * Navigates to the next slide.
+       */
+      function goToNext() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      // Auto-play interval
+      let autoPlayInterval = setInterval(goToNext, 5000); // Change slide every 5 seconds
+
+      /**
+       * Attaches event listeners and starts the carousel.
+       */
+      function initializeCarousel() {
+        prevBtn.addEventListener("click", () => {
+          clearInterval(autoPlayInterval);
+          goToPrev();
+          autoPlayInterval = setInterval(goToNext, 5000);
+        });
+        nextBtn.addEventListener("click", () => {
+          clearInterval(autoPlayInterval);
+          goToNext();
+          autoPlayInterval = setInterval(goToNext, 5000);
+        });
+
+        updateCarousel();
+      }
+
+      // Run initialization functions when the page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts();
+        initializeCarousel();
+      });
+    </script>
+  </body>
+</html>

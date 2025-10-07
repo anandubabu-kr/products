@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - Noise-Cancelling Headphones</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and light theme colors -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: "#4F46E5", // Indigo-600
+              "accent-red": "#DC2626", // Red-600 for discounts
+              "light-bg": "#F9FAFB", // Light Gray background
+              "light-card": "#FFFFFF", // White card background
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Ensures smooth scaling for selectors */
+      .option-selector {
+        transition: all 0.2s;
+      }
+    </style>
+  </head>
+  <body class="bg-light-bg text-gray-900 min-h-screen">
+    <!-- Header/Navigation Bar (Consistent with Products Page) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
+            Integra
+          </h1>
+          <nav class="mt-2 md:mt-0 space-x-4">
+            <a
+              href="./index.html"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-primary transition duration-150 ease-in-out font-medium"
+              >Cart (0)</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <!-- Breadcrumbs -->
+      <nav class="mb-6 text-sm text-gray-500">
+        <a href="#" class="hover:text-primary">Home</a> /
+        <a href="products.html" class="hover:text-primary">All Products</a> /
+        <span class="font-medium text-gray-700" id="product-name-breadcrumb"
+          >...</span
+        >
+      </nav>
+
+      <!-- Product Container: Responsive Grid -->
+      <section class="bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <!-- Left Column: Product Image Gallery -->
+          <div class="lg:sticky lg:top-28">
+            <!-- Main Image Placeholder -->
+            <div
+              class="relative w-full aspect-square bg-gray-100 rounded-lg overflow-hidden shadow-xl mb-4"
+            >
+              <img
+                id="main-product-image"
+                src="https://picsum.photos/seed/detail4/600/600"
+                alt="Noise-Cancelling Headphones"
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x600/F3F4F6/6B7280?text=Product+View';"
+              />
+            </div>
+
+            <!-- Small Thumbnail Gallery (Mock) -->
+            <div class="flex space-x-3 overflow-x-auto pb-2">
+              <div
+                class="w-20 h-20 rounded-lg bg-gray-200 border-2 border-primary cursor-pointer flex-shrink-0"
+              >
+                <img
+                  src="https://picsum.photos/seed/detail4/100/100"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div
+                class="w-20 h-20 rounded-lg bg-gray-200 border-2 border-transparent hover:border-gray-400 cursor-pointer flex-shrink-0"
+              >
+                <img
+                  src="https://picsum.photos/seed/detail4a/100/100"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div
+                class="w-20 h-20 rounded-lg bg-gray-200 border-2 border-transparent hover:border-gray-400 cursor-pointer flex-shrink-0"
+              >
+                <img
+                  src="https://picsum.photos/seed/detail4b/100/100"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div
+                class="w-20 h-20 rounded-lg bg-gray-200 border-2 border-transparent hover:border-gray-400 cursor-pointer flex-shrink-0"
+              >
+                <img
+                  src="https://picsum.photos/seed/detail4c/100/100"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Product Details and Purchase Options -->
+          <div>
+            <h1
+              class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2"
+              id="product-name"
+            >
+              Noise-Cancelling Headphones Pro
+            </h1>
+            <p class="text-gray-500 mb-6" id="product-category">
+              Category: Electronics
+            </p>
+
+            <!-- Price Block -->
+            <div
+              class="mb-8 p-4 border-y border-gray-200 flex items-center justify-between"
+            >
+              <div class="flex items-baseline space-x-3">
+                <span
+                  class="text-4xl font-extrabold text-primary"
+                  id="final-price"
+                  >₹224.99</span
+                >
+                <span
+                  class="text-xl text-gray-500 line-through"
+                  id="original-price"
+                  >₹299.99</span
+                >
+              </div>
+              <span
+                class="bg-accent-red text-white text-lg font-bold px-3 py-1 rounded-full shadow-lg"
+                id="discount-badge"
+                >25% OFF</span
+              >
+            </div>
+
+            <!-- Short Description -->
+            <h2 class="text-xl font-semibold mb-3">Product Overview</h2>
+            <p
+              class="text-gray-600 leading-relaxed mb-6"
+              id="product-short-description"
+            >
+              Experience pure audio immersion with industry-leading noise
+              cancellation. Featuring 40-hour battery life and supreme comfort
+              for all-day listening. Perfect for travel, work, or focus.
+            </p>
+
+            <!-- --- Options to Buy --- -->
+            <div class="space-y-6 mb-8">
+              <!-- Color Selector -->
+              <div>
+                <label class="block text-lg font-medium text-gray-800 mb-2"
+                  >Color:</label
+                >
+                <div class="flex space-x-3" id="color-options">
+                  <button
+                    class="w-8 h-8 rounded-full border-4 border-transparent option-selector"
+                    style="background-color: #1f2937"
+                    data-color="Black"
+                    data-active-border="border-primary"
+                  ></button>
+                  <button
+                    class="w-8 h-8 rounded-full border-4 border-transparent hover:border-gray-300 option-selector"
+                    style="background-color: #d1d5db"
+                    data-color="Silver"
+                    data-active-border="border-primary"
+                  ></button>
+                  <button
+                    class="w-8 h-8 rounded-full border-4 border-transparent hover:border-gray-300 option-selector"
+                    style="background-color: #ef4444"
+                    data-color="Red"
+                    data-active-border="border-primary"
+                  ></button>
+                </div>
+              </div>
+
+              <!-- Quantity Selector -->
+              <div>
+                <label class="block text-lg font-medium text-gray-800 mb-2"
+                  >Quantity:</label
+                >
+                <div class="flex items-center space-x-3">
+                  <button
+                    id="qty-minus"
+                    class="w-10 h-10 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-150 text-xl font-bold"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    id="qty-input"
+                    value="1"
+                    min="1"
+                    max="10"
+                    readonly
+                    class="w-16 text-center border border-gray-300 rounded-lg py-2 focus:ring-primary focus:border-primary"
+                  />
+                  <button
+                    id="qty-plus"
+                    class="w-10 h-10 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-150 text-xl font-bold"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button
+              id="add-to-cart-btn"
+              class="w-full bg-primary text-white text-xl font-bold py-4 rounded-xl hover:bg-indigo-700 transition duration-300 shadow-xl shadow-primary/40"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Specifications and Detailed Description -->
+      <section class="mt-12">
+        <h2
+          class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-300 pb-3"
+        >
+          Detailed Specifications
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Description -->
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+              In-Depth Features
+            </h3>
+            <ul class="list-disc list-inside text-gray-600 space-y-3 pl-4">
+              <li>
+                **Acoustic Transparency Mode:** Allows ambient sounds to filter
+                in when needed for safety and awareness.
+              </li>
+              <li>
+                **Adaptive EQ:** Automatically tunes music to your ear shape for
+                a consistently rich audio experience.
+              </li>
+              <li>
+                **Premium Build:** Stainless steel headband and memory foam
+                earcups for exceptional durability and comfort.
+              </li>
+              <li>
+                **Quick Charging:** Get up to 5 hours of playback from a
+                15-minute charge.
+              </li>
+              <li>
+                **Bluetooth 5.2:** Ensures a stable, low-latency wireless
+                connection.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tech Specs Table -->
+          <div class="md:col-span-1 bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+              Technical Details
+            </h3>
+            <table class="w-full text-left text-gray-600">
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 font-medium">Driver</td>
+                  <td class="py-2">40mm Dynamic</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 font-medium">Battery Life</td>
+                  <td class="py-2">40 Hours (ANC Off)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 font-medium">Weight</td>
+                  <td class="py-2">254g</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 font-medium">Water Resistance</td>
+                  <td class="py-2">IPX4 Rated</td>
+                </tr>
+                <tr>
+                  <td class="py-2 font-medium">Warranty</td>
+                  <td class="py-2">2 Years</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Product Data Mockup ---
+        // Data is hardcoded for demonstration but would typically come from an API
+        const product = {
+          id: 4,
+          name: "Noise-Cancelling Headphones Pro",
+          category: "Electronics",
+          price: 299.99,
+          discount: 25,
+          shortDesc:
+            "Experience pure audio immersion with industry-leading noise cancellation. Featuring 40-hour battery life and supreme comfort for all-day listening. Perfect for travel, work, or focus.",
+          // options: [{ type: "color", values: ["Black", "Silver", "Red"] }]
+        };
+
+        // --- Price Calculation and Display ---
+        const finalPrice =
+          product.discount > 0
+            ? product.price * (1 - product.discount / 100)
+            : product.price;
+
+        document.getElementById("product-name-breadcrumb").textContent =
+          product.name;
+        document.getElementById("product-name").textContent = product.name;
+        document.getElementById(
+          "product-category"
+        ).textContent = `Category: ${product.category}`;
+        document.getElementById("product-short-description").textContent =
+          product.shortDesc;
+        document.getElementById(
+          "original-price"
+        ).textContent = `₹${product.price.toFixed(2)}`;
+        document.getElementById(
+          "final-price"
+        ).textContent = `₹${finalPrice.toFixed(2)}`;
+        document.getElementById(
+          "discount-badge"
+        ).textContent = `${product.discount}% OFF`;
+
+        // If no discount, hide the line-through price and the badge
+        if (product.discount === 0) {
+          document.getElementById("original-price").style.display = "none";
+          document.getElementById("discount-badge").style.display = "none";
+        }
+
+        // --- Quantity Selector Logic ---
+        const qtyInput = document.getElementById("qty-input");
+        const qtyMinusBtn = document.getElementById("qty-minus");
+        const qtyPlusBtn = document.getElementById("qty-plus");
+        const minQty = parseInt(qtyInput.min);
+        const maxQty = parseInt(qtyInput.max);
+
+        qtyMinusBtn.addEventListener("click", () => {
+          let current = parseInt(qtyInput.value);
+          if (current > minQty) {
+            qtyInput.value = current - 1;
+          }
+        });
+
+        qtyPlusBtn.addEventListener("click", () => {
+          let current = parseInt(qtyInput.value);
+          if (current < maxQty) {
+            qtyInput.value = current + 1;
+          }
+        });
+
+        // --- Option Selector Logic (Color) ---
+        const colorOptions = document.querySelectorAll(
+          "#color-options .option-selector"
+        );
+        const initialColor = colorOptions[0]; // Default to the first color (Black)
+
+        // Set initial active state
+        initialColor.classList.add("border-primary");
+        let selectedColor = initialColor.getAttribute("data-color");
+
+        colorOptions.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all
+            colorOptions.forEach((btn) =>
+              btn.classList.remove("border-primary")
+            );
+
+            // Add active class to the clicked button
+            button.classList.add("border-primary");
+            selectedColor = button.getAttribute("data-color");
+            console.log("Selected Color:", selectedColor);
+          });
+        });
+
+        // --- Add to Cart Handler ---
+        document
+          .getElementById("add-to-cart-btn")
+          .addEventListener("click", () => {
+            const quantity = parseInt(qtyInput.value);
+            // In a real application, this would send data to a backend API
+            alert(
+              `Added ${quantity} x ${product.name} (${selectedColor}) to cart!`
+            );
+          });
+      });
+    </script>
+  </body>
+</html>
