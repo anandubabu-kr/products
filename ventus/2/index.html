@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anandu's Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        scroll-behavior: smooth;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .text-gradient {
+        background-image: linear-gradient(to right, #6ee7b7, #3b82f6, #9333ea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2),
+          0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
+      .animate-fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-gray-200">
+    <!-- Header & Navigation -->
+    <header class="py-6 fixed w-full z-50 bg-gray-900/80 backdrop-blur-sm">
+      <div class="container flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-gradient">Anandu</a>
+        <nav>
+          <ul class="flex space-x-6">
+            <li>
+              <a href="#services" class="hover:text-green-400 transition-colors"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-green-400 transition-colors"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-green-400 transition-colors"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main
+      class="min-h-screen flex items-center justify-center text-center pt-20 pb-12"
+    >
+      <div class="container animate-fade-in">
+        <h1 class="text-6xl md:text-8xl font-bold text-gradient mb-4">
+          Anandu
+        </h1>
+        <p class="text-2xl md:text-3xl font-light text-gray-400 mb-8">
+          Pro Web Designer with 5 Years of Experience
+        </p>
+        <p
+          class="max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-gray-400"
+        >
+          I specialize in crafting elegant, responsive, and high-performance
+          websites that deliver exceptional user experiences. With a passion for
+          clean code and modern design principles, I bring your digital visions
+          to life.
+        </p>
+        <div class="mt-10 flex justify-center space-x-4">
+          <a
+            href="#projects"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors transform hover:scale-105"
+            >View Projects</a
+          >
+          <a
+            href="#contact"
+            class="border border-gray-600 hover:border-blue-600 text-gray-300 font-bold py-3 px-8 rounded-full transition-colors transform hover:scale-105"
+            >Get in Touch</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-800">
+      <div class="container">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-12">
+          Services I Provide
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="bg-gray-700 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"
+          >
+            <div class="text-5xl text-blue-400 mb-4">
+              <svg
+                class="w-12 h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L12 19.25M12 19.25L14.25 17M12 19.25V5M17.25 12h-10"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">
+              Web Design & Development
+            </h3>
+            <p class="text-gray-400">
+              I create custom, responsive websites from scratch, tailored to
+              your unique needs and brand identity.
+            </p>
+          </div>
+          <!-- Service 2 -->
+          <div
+            class="bg-gray-700 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"
+          >
+            <div class="text-5xl text-green-400 mb-4">
+              <svg
+                class="w-12 h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM21 12c-2.21 0-4-1.79-4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM3 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">UI/UX Design</h3>
+            <p class="text-gray-400">
+              I focus on intuitive and engaging user interfaces to ensure a
+              seamless and enjoyable experience for your visitors.
+            </p>
+          </div>
+          <!-- Service 3 -->
+          <div
+            class="bg-gray-700 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"
+          >
+            <div class="text-5xl text-purple-400 mb-4">
+              <svg
+                class="w-12 h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13.5 6H5.25a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5-6h11.25c1.24 0 2.25 1.01 2.25 2.25v11.25m-2.25-11.25H18.75a2.25 2.25 0 012.25 2.25v11.25"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">
+              Code Refactoring & Optimization
+            </h3>
+            <p class="text-gray-400">
+              I specialize in optimizing existing websites for better
+              performance, speed, and maintainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+      <div class="container">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-12">
+          My Work
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <a
+            href="#"
+            class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg project-card"
+          >
+            <img
+              src="https://placehold.co/800x600/1e293b/c9d1d9?text=Project+1"
+              alt="Project 1"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">
+                E-commerce Platform
+              </h3>
+              <p class="text-gray-400">
+                A modern e-commerce site with a clean design and seamless
+                checkout process.
+              </p>
+            </div>
+          </a>
+          <!-- Project 2 -->
+          <a
+            href="#"
+            class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg project-card"
+          >
+            <img
+              src="https://placehold.co/800x600/1e293b/c9d1d9?text=Project+2"
+              alt="Project 2"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">
+                Corporate Website
+              </h3>
+              <p class="text-gray-400">
+                A professional corporate site with detailed service pages and a
+                blog.
+              </p>
+            </div>
+          </a>
+          <!-- Project 3 -->
+          <a
+            href="#"
+            class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg project-card"
+          >
+            <img
+              src="https://placehold.co/800x600/1e293b/c9d1d9?text=Project+3"
+              alt="Project 3"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">
+                Portfolio Showcase
+              </h3>
+              <p class="text-gray-400">
+                A sleek and modern portfolio site for a creative professional.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+      <div class="container text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Get In Touch
+        </h2>
+        <p class="text-lg text-gray-400 mb-8">
+          Interested in collaborating on a project? Let's connect!
+        </p>
+        <a
+          href="mailto:your.email@example.com"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full transition-colors transform hover:scale-105"
+        >
+          Send a Message
+        </a>
+        <div class="mt-8 flex justify-center space-x-6 text-2xl">
+          <a href="#" class="hover:text-blue-400 transition-colors">
+            <svg
+              class="w-8 h-8"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.772 1.69 4.922 4.92.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.252-1.69 4.772-4.922 4.92-1.265.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.772-1.69-4.92-4.92-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.69-4.772 4.92-4.92zM12 4c-3.111 0-3.484.012-4.747.069C4.945 4.223 3.542 5.626 3.387 8.163c-.057 1.263-.069 1.636-.069 4.747s.012 3.484.069 4.747c.155 2.537 1.558 3.94 4.096 4.096 1.263.057 1.636.069 4.747.069s3.484-.012 4.747-.069c2.537-.155 3.94-1.558 4.096-4.096.057-1.263.069-1.636.069-4.747s-.012-3.484-.069-4.747c-.155-2.537-1.558-3.94-4.096-4.096-1.263-.057-1.636-.069-4.747-.069z"
+              ></path>
+              <path
+                d="M12 10.74c-1.802 0-3.26 1.458-3.26 3.26s1.458 3.26 3.26 3.26 3.26-1.458 3.26-3.26-1.458-3.26-3.26-3.26zm0 5.02c-1.025 0-1.76-1.025-1.76-1.76s.735-1.76 1.76-1.76 1.76.735 1.76 1.76-.735 1.76-1.76 1.76zm4.512-5.18a1.238 1.238 0 10-1.238 1.238 1.238 1.238 0 001.238-1.238z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" class="hover:text-blue-400 transition-colors"> </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
