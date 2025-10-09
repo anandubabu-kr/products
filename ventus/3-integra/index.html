@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integra - Computer Sales & Services</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8g/zZzW5SOPdih8sJj2a4/oA2p5sP5I2tQG7D2M3OqV7K7zJ1i3l+5Z0A7w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Define the Inter font and set the primary color for Tailwind */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+      :root {
+        --primary-color: #7fd858;
+        --dark-bg: #111827;
+        --light-bg: #ffffff;
+        --dark-card: #1f2937;
+        --light-card: #f9fafb;
+      }
+
+      /* Base styles */
+      body {
+        font-family: "Inter", sans-serif;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Custom scrollbar for aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+
+      /* Animation for subtle glow on buttons */
+      .btn-primary:hover {
+        box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+      }
+
+      /* Dark Mode adjustments for card backgrounds */
+      .dark .card-bg {
+        background-color: var(--dark-card);
+      }
+      .card-bg {
+        background-color: var(--light-card);
+      }
+      /* Simple fadeIn animation for hero elements */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      .delay-150 {
+        animation-delay: 0.15s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      /* Simple bounceIn for buttons */
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .animate-bounceIn {
+        animation: bounceIn 0.5s ease-out forwards;
+      }
+    </style>
+  </head>
+
+  <body
+    class="text-gray-900 bg-white dark:text-white dark:bg-gray-900 min-h-screen"
+  >
+    <!-- Theme Initialization Script -->
+    <script>
+      // IIFE to set initial theme based on system preference
+      (function () {
+        const isDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (isDark) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+
+      // Listener for changes in system preference
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (e.matches) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        });
+
+      // --- Dynamic Product Data and Rendering Logic ---
+      // Added brand, model, and originalPrice (for discount calculation)
+      const productsData = [
+        {
+          id: 1,
+          name: "High-End Gaming Laptop",
+          brand: "X-Tech",
+          model: "GamerPro Z15",
+          originalPrice: 175000,
+          price: 145000,
+          imgText: "X-Tech+Laptop",
+          category: "Laptops",
+        },
+        {
+          id: 2,
+          name: "Mechanical Gaming Keyboard",
+          brand: "SpeedKeys",
+          model: "SK-900",
+          originalPrice: 6999,
+          price: 5999,
+          imgText: "SpeedKeys+Keyboard",
+          category: "Peripherals",
+        },
+        {
+          id: 3,
+          name: "Wireless Ergonomic Mouse",
+          brand: "ErgoFlow",
+          model: "EF-M5",
+          originalPrice: 2800,
+          price: 2499,
+          imgText: "ErgoFlow+Mouse",
+          category: "Peripherals",
+        },
+        {
+          id: 4,
+          name: "Used Refurbished Smartphone",
+          brand: "PhonePlus",
+          model: "P+X20",
+          originalPrice: 20000,
+          price: 18000,
+          imgText: "Refurbished+Phone",
+          category: "Used",
+        },
+        {
+          id: 5,
+          name: "Bluetooth Soundbar Speaker",
+          brand: "Acoustix",
+          model: "AS-B30",
+          originalPrice: 6500,
+          price: 4999,
+          imgText: "Acoustix+Speaker",
+          category: "Audio",
+        },
+        {
+          id: 6,
+          name: "Noise Cancelling Headphones",
+          brand: "AudioZen",
+          model: "AZ-H9",
+          originalPrice: 8999,
+          price: 7999,
+          imgText: "AudioZen+Headphones",
+          category: "Audio",
+        },
+        {
+          id: 7,
+          name: "Fast USB-C Wall Charger (65W)",
+          brand: "PowerUp",
+          model: "PU-65W",
+          originalPrice: 1400,
+          price: 1299,
+          imgText: "PowerUp+Charger",
+          category: "Accessories",
+        },
+        {
+          id: 8,
+          name: "External Solid State Drive (1TB)",
+          brand: "DataVault",
+          model: "DV-1TB",
+          originalPrice: 7500,
+          price: 6500,
+          imgText: "DataVault+SSD",
+          category: "Components",
+        },
+      ];
+
+      const initialDisplayCount = 4;
+      let currentDisplayedCount = 0;
+
+      /**
+       * Renders a single product card with e-commerce style details.
+       * @param {Object} product - The product object.
+       * @returns {string} The HTML string for the product card.
+       */
+      function createProductCard(product) {
+        // Placeholder uses dark background and primary green text for a tech aesthetic
+        const bgColor = "1f2937"; // Dark card background color
+        const textColor = "7FD858"; // Primary green color
+
+        // Format price to Indian Rupee (₹)
+        const formattedPrice = product.price.toLocaleString("en-IN", {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 0,
+        });
+
+        let discountBadge = "";
+        let originalPriceHtml = "";
+
+        if (product.originalPrice && product.originalPrice > product.price) {
+          const formattedOriginalPrice = product.originalPrice.toLocaleString(
+            "en-IN",
+            {
+              style: "currency",
+              currency: "INR",
+              maximumFractionDigits: 0,
+            }
+          );
+
+          // Calculate discount percentage
+          const discountPercent = Math.round(
+            ((product.originalPrice - product.price) / product.originalPrice) *
+              100
+          );
+
+          originalPriceHtml = `<span class="text-sm text-gray-500 line-through mr-2">${formattedOriginalPrice}</span>`;
+          discountBadge = `<span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">-${discountPercent}%</span>`;
+        }
+
+        return `
+                <!-- Product Item ${product.id} -->
+                <div class="card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.03] transition duration-500 group relative pb-12">
+                    <!-- Discount Badge (if applicable) -->
+                    ${discountBadge} 
+                    
+                    <!-- Image Placeholder -->
+                    <div class="relative w-full h-36 bg-gray-800 flex items-center justify-center">
+                        <img 
+                            src="https://placehold.co/400x300/${bgColor}/${textColor}?text=${product.imgText.replace(
+          /\s/g,
+          "+"
+        )}" 
+                            alt="${product.name}" 
+                            class="w-full h-36 object-cover transition duration-500 group-hover:opacity-80"
+                        >
+                    </div>
+
+                    <div class="p-4">
+                        <!-- Brand and Model -->
+                        <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">${
+                          product.brand
+                        }</p>
+                        <h4 class="text-lg font-semibold mb-1 truncate">${
+                          product.name
+                        }</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Model: ${
+                          product.model
+                        }</p>
+                        
+                        <!-- Pricing -->
+                        <div class="flex items-baseline">
+                            ${originalPriceHtml}
+                            <p class="text-xl text-[#7FD858] font-extrabold">${formattedPrice}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Buy Button on Hover -->
+                    <div class="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button class="w-full bg-[#7FD858] text-gray-900 font-bold py-2 rounded-lg text-sm hover:bg-[#6ec248] transition shadow-md shadow-[#7FD858]/50">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+      }
+
+      /**
+       * Renders a slice of the product data.
+       * @param {number} start - Start index.
+       * @param {number} end - End index (exclusive).
+       */
+      function renderProducts(start, end) {
+        const productsGrid = document.getElementById("products-grid");
+        const productsToRender = productsData.slice(start, end);
+
+        const html = productsToRender.map(createProductCard).join("");
+        productsGrid.insertAdjacentHTML("beforeend", html);
+
+        currentDisplayedCount += productsToRender.length;
+        updateShowMoreButton();
+      }
+
+      /**
+       * Updates the visibility and text of the "Show More" button.
+       */
+      function updateShowMoreButton() {
+        const showMoreBtn = document.getElementById("show-more-btn");
+        if (showMoreBtn) {
+          if (currentDisplayedCount >= productsData.length) {
+            showMoreBtn.style.display = "none";
+            document
+              .getElementById("show-more-container")
+              .classList.remove("flex");
+            document
+              .getElementById("show-more-container")
+              .classList.add("hidden");
+          } else {
+            const remaining = productsData.length - currentDisplayedCount;
+            const nextLoadCount = Math.min(4, remaining); // Load up to 4 more
+            showMoreBtn.textContent = `Show ${nextLoadCount} More Products`;
+            showMoreBtn.style.display = "block";
+            document
+              .getElementById("show-more-container")
+              .classList.add("flex");
+            document
+              .getElementById("show-more-container")
+              .classList.remove("hidden");
+          }
+        }
+      }
+
+      /**
+       * Event handler for the "Show More" button.
+       */
+      function handleShowMore() {
+        const nextStart = currentDisplayedCount;
+        const nextEnd = nextStart + 4; // Load up to 4 more products
+        renderProducts(nextStart, nextEnd);
+      }
+
+      // Initial render on load
+      window.addEventListener("load", () => {
+        const showMoreBtn = document.getElementById("show-more-btn");
+        if (showMoreBtn) {
+          showMoreBtn.addEventListener("click", handleShowMore);
+        }
+        renderProducts(0, initialDisplayCount);
+      });
+    </script>
+
+    <!-- Header / Navigation -->
+    <header
+      class="sticky top-0 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md rounded-b-xl"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+        >
+          <span class="text-[#7FD858]">IN</span>TEGRA
+        </a>
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#services"
+            class="text-lg font-medium hover:text-[#7FD858] transition duration-300"
+            >Services</a
+          >
+          <a
+            href="#products"
+            class="text-lg font-medium hover:text-[#7FD858] transition duration-300"
+            >Products</a
+          >
+          <a
+            href="#contact"
+            class="text-lg font-medium hover:text-[#7FD858] transition duration-300"
+            >Contact</a
+          >
+        </nav>
+        <!-- Mobile Menu Button (Hidden for simplicity in single-file mandate, but placeholder kept) -->
+        <div class="md:hidden">
+          <button class="text-gray-900 dark:text-white text-2xl">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. Hero Section -->
+      <section
+        id="hero"
+        class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="lg:w-3/4 xl:w-2/3">
+            <h1
+              class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter mb-6 animate-fadeIn"
+            >
+              Empowering Your
+              <span class="text-[#7FD858] block md:inline">Tech Journey</span>
+              with Integra Hub.
+            </h1>
+            <p
+              class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-xl animate-fadeIn delay-300"
+            >
+              Expert computer and electronics sales, diagnostics, repairs, and
+              custom builds—right here in your neighborhood.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#services"
+                class="btn-primary bg-[#7FD858] text-gray-900 font-semibold py-3 px-8 rounded-full transition duration-300 hover:scale-[1.02] transform shadow-lg shadow-[#7FD858]/50 animate-bounceIn"
+              >
+                Explore Services
+              </a>
+              <a
+                href="#contact"
+                class="bg-transparent border-2 border-[#7FD858] text-[#7FD858] font-semibold py-3 px-8 rounded-full transition duration-300 hover:bg-[#7FD858]/10 hover:shadow-lg hover:shadow-[#7FD858]/30 animate-bounceIn delay-150"
+              >
+                Get a Quote
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Services Section -->
+      <section
+        id="services"
+        class="py-20 md:py-28 bg-gray-50 dark:bg-gray-800/50"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-4xl font-bold text-center mb-4">Our Expertise</h2>
+          <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-16">
+            Reliable technology solutions you can trust.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service Card 1: Repair -->
+            <div
+              class="card-bg p-8 rounded-2xl shadow-xl border-t-4 border-[#7FD858] hover:shadow-2xl hover:-translate-y-1 transition duration-500"
+            >
+              <i
+                class="fas fa-screwdriver-wrench text-5xl text-[#7FD858] mb-4"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-3">
+                Expert Repair & Diagnostics
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Fast and reliable repairs for laptops, desktops, phones, and
+                tablets. Component replacement, virus removal, and data recovery
+                services.
+              </p>
+            </div>
+
+            <!-- Service Card 2: Custom Builds -->
+            <div
+              class="card-bg p-8 rounded-2xl shadow-xl border-t-4 border-[#7FD858] hover:shadow-2xl hover:-translate-y-1 transition duration-500"
+            >
+              <i class="fas fa-microchip text-5xl text-[#7FD858] mb-4"></i>
+              <h3 class="text-2xl font-semibold mb-3">Custom PC Builds</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Building personalized systems for gaming, professional content
+                creation, or high-performance business use. Optimized for your
+                needs.
+              </p>
+            </div>
+
+            <!-- Service Card 3: Consulting/Sales -->
+            <div
+              class="card-bg p-8 rounded-2xl shadow-xl border-t-4 border-[#7FD858] hover:shadow-2xl hover:-translate-y-1 transition duration-500"
+            >
+              <i class="fas fa-headset text-5xl text-[#7FD858] mb-4"></i>
+              <h3 class="text-2xl font-semibold mb-3">
+                Tech Consulting & Sales
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Sales of new and refurbished hardware. Expert advice on network
+                setup, smart home integration, and equipment upgrades.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Products/Gallery Section -->
+      <section id="products" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-4xl font-bold text-center mb-4">Quality Products</h2>
+          <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-16">
+            Hand-picked hardware and essential electronics.
+          </p>
+
+          <!-- Products Container (Dynamically rendered by JS) -->
+          <div id="products-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Product cards will be injected here by JavaScript -->
+          </div>
+
+          <!-- Show More Button Container -->
+          <div id="show-more-container" class="flex justify-center mt-12">
+            <button
+              id="show-more-btn"
+              class="btn-primary bg-[#7FD858] text-gray-900 font-semibold py-3 px-8 rounded-lg transition duration-300 hover:scale-[1.01] transform shadow-md shadow-[#7FD858]/50"
+            >
+              Show More Products
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Contact Section (Updated Details) -->
+      <section
+        id="contact"
+        class="py-20 md:py-28 bg-[#7FD858]/10 dark:bg-gray-800"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-4xl font-bold text-center mb-4">Get In Touch</h2>
+          <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-16">
+            Ready for fast, local service? Find us or send a message.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Information -->
+            <div class="space-y-8 p-6 rounded-xl card-bg shadow-xl">
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-map-marker-alt text-3xl text-[#7FD858]"></i>
+                <div>
+                  <h4 class="text-xl font-semibold">Our Location</h4>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    St.Joseph's Press buildings, Cotton Hill, Vazhuthacaud.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-clock text-3xl text-[#7FD858]"></i>
+                <div>
+                  <h4 class="text-xl font-semibold">Business Hours</h4>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Mon - Sat: 9:00 AM - 8:30 PM
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-phone-alt text-3xl text-[#7FD858]"></i>
+                <div>
+                  <h4 class="text-xl font-semibold">Call Us</h4>
+                  <p class="text-gray-600 dark:text-gray-400">+91 9497212906</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder Contact Form -->
+            <div class="p-6 rounded-xl card-bg shadow-xl">
+              <form action="#" method="POST" class="space-y-4">
+                <div>
+                  <label for="name" class="block text-sm font-medium"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 dark:bg-gray-700 dark:border-gray-600 focus:border-[#7FD858] focus:ring-[#7FD858]"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 dark:bg-gray-700 dark:border-gray-600 focus:border-[#7FD858] focus:ring-[#7FD858]"
+                  />
+                </div>
+                <div>
+                  <label for="message" class="block text-sm font-medium"
+                    >How can we help?</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 dark:bg-gray-700 dark:border-gray-600 focus:border-[#7FD858] focus:ring-[#7FD858]"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn-primary w-full bg-[#7FD858] text-gray-900 font-semibold py-3 px-8 rounded-lg transition duration-300 hover:scale-[1.01] transform shadow-md shadow-[#7FD858]/50"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="mt-12 py-8 bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400"
+      >
+        &copy; 2025 Integra. All rights reserved. | Powered by Local Expertise.
+      </div>
+    </footer>
+  </body>
+</html>
